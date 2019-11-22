@@ -1,0 +1,45 @@
+package com.github.p9yp9y.screensaver;
+
+import java.awt.Frame;
+import java.awt.Window.Type;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Text;
+
+public class Main {
+	public static void main(final String[] args) {
+		Frame f = new Frame();
+		f.setType(Type.POPUP);
+		f.setBounds(50, 50, 500, 500);
+
+		f.setVisible(true);
+
+		Display display = new Display();
+
+		long d;
+		try {
+			d = Long.parseLong(System.getenv().get("XSCREENSAVER_WINDOW").replace("0x", ""));
+		} catch (Exception e) {
+			d = 0l;
+		}
+
+		Shell shell = Shell.gtk_new(display, d);
+		shell.setSize(1000, 1000);
+
+		Text helloWorldTest = new Text(shell, SWT.NONE);
+		helloWorldTest.setSize(1000, 1000);
+		helloWorldTest.setText("Hello World SWT");
+		// helloWorldTest.pack();
+
+		shell.pack();
+		shell.open();
+		while (!shell.isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+		display.dispose();
+	}
+}
