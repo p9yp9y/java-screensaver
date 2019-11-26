@@ -30,12 +30,6 @@
 			<artifactId>javafx-web</artifactId>
 			<version>14-ea+2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->
-		<dependency>
-			<groupId>org.openjfx</groupId>
-			<artifactId>javafx-swing</artifactId>
-			<version>14-ea+2</version>
-		</dependency>
 
 
 	</dependencies>
